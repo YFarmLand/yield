@@ -40,27 +40,27 @@ async function main() {
     const UNIPrice = CREAMPerUNI * CREAMPrice + WETHPerUNI * ETHPrice;
 
     _print("========== PRICES ==========")
-    _print(`1 CREAM  = $${CREAMPrice}`);
+    _print(`1 YFARMER  = $${CREAMPrice}`);
     _print(`1 ETH   = $${ETHPrice}\n`);
     _print(`1 UNI   = [${CREAMPerUNI} CREAM, ${WETHPerUNI} ETH]`);
     _print(`        = ${toDollar(UNIPrice)}\n`);
 
     _print("========== STAKING =========")
-    _print(`There are total   : ${totalUNIAmount} UNI issued by CREAM ETH Uniswap Pool.`);
-    _print(`There are total   : ${totalStakedUNIAmount} UNI staked in CREAM's UNI staking pool.`);
+    _print(`There are total   : ${totalUNIAmount} UNI issued by YFARMER ETH Uniswap Pool.`);
+    _print(`There are total   : ${totalStakedUNIAmount} UNI staked in YFARMER's UNI staking pool.`);
     _print(`                  = ${toDollar(totalStakedUNIAmount * UNIPrice)}\n`);
     _print(`You are staking   : ${stakedUNIAmount} UNI (${toFixed(stakedUNIAmount * 100 / totalStakedUNIAmount, 3)}% of the pool)`);
     _print(`                  = [${CREAMPerUNI * stakedUNIAmount} CREAM, ${WETHPerUNI * stakedUNIAmount} ETH]`);
     _print(`                  = ${toDollar(CREAMPerUNI * stakedUNIAmount * CREAMPrice + WETHPerUNI * stakedUNIAmount * ETHPrice)}\n`);
 
     // CREAM REWARDS
-    _print("======== CREAM REWARDS ========")
-    _print(`Claimable Rewards : ${toFixed(earnedCREAM, 4)} CREAM = ${toDollar(earnedCREAM * CREAMPrice)}`);
+    _print("======== YFARMER REWARDS ========")
+    _print(`Claimable Rewards : ${toFixed(earnedCREAM, 4)} YFARMER = ${toDollar(earnedCREAM * CREAMPrice)}`);
     const CREAMWeeklyEstimate = rewardPerToken * stakedUNIAmount;
 
-    _print(`Hourly estimate   : ${toFixed(CREAMWeeklyEstimate / (24 * 7), 4)} CREAM = ${toDollar((CREAMWeeklyEstimate / (24 * 7)) * CREAMPrice)} (out of total ${toFixed(weekly_reward / (7 * 24), 2)} CREAM)`)
-    _print(`Daily estimate    : ${toFixed(CREAMWeeklyEstimate / 7, 2)} CREAM = ${toDollar((CREAMWeeklyEstimate / 7) * CREAMPrice)} (out of total ${toFixed(weekly_reward / 7, 2)} CREAM)`)
-    _print(`Weekly estimate   : ${toFixed(CREAMWeeklyEstimate, 2)} CREAM = ${toDollar(CREAMWeeklyEstimate * CREAMPrice)} (out of total ${weekly_reward} CREAM)`)
+    _print(`Hourly estimate   : ${toFixed(CREAMWeeklyEstimate / (24 * 7), 4)} YFARMER = ${toDollar((CREAMWeeklyEstimate / (24 * 7)) * CREAMPrice)} (out of total ${toFixed(weekly_reward / (7 * 24), 2)} CREAM)`)
+    _print(`Daily estimate    : ${toFixed(CREAMWeeklyEstimate / 7, 2)} YFARMER = ${toDollar((CREAMWeeklyEstimate / 7) * CREAMPrice)} (out of total ${toFixed(weekly_reward / 7, 2)} YFARMER)`)
+    _print(`Weekly estimate   : ${toFixed(CREAMWeeklyEstimate, 2)} YFARMER = ${toDollar(CREAMWeeklyEstimate * CREAMPrice)} (out of total ${weekly_reward} YFARMER)`)
     const CREAMWeeklyROI = (rewardPerToken * CREAMPrice) * 100 / (UNIPrice);
 
     _print(`\nHourly ROI in USD : ${toFixed((CREAMWeeklyROI / 7) / 24, 4)}%`)
@@ -97,7 +97,7 @@ async function main() {
     _print_link(`Reset approval to 0`, resetApprove);
     _print_link(`Stake ${unstakedUNI} UNI`, approveTENDAndStake);
     _print_link(`Unstake ${stakedUNIAmount} UNI`, unstake);
-    _print_link(`Claim ${earnedCREAM} CREAM`, claim);
+    _print_link(`Claim ${earnedCREAM} YFARMER`, claim);
     _print_link(`Exit`, exit);
 
     await _print24HourPrice("cream-2", "CREAM");
