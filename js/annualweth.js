@@ -10,14 +10,14 @@ async function main() {
     _print(`Initialized ${App.YOUR_ADDRESS}`);
     _print("Reading smart contracts...");
 
-    const Y_STAKING_POOL = new ethers.Contract(Y_STAKING_POOL_ADDR, CREAM_REWARD_POOL_ABI, App.provider);
+    const Y_STAKING_POOL = new ethers.Contract(ANNUAL_WETH_STAKING_POOL, CREAM_REWARD_POOL_ABI, App.provider);
     const CURVE_Y_POOL = new ethers.Contract(CURVE_Y_POOL_ADDR, CURVE_Y_POOL_ABI, App.provider);
     const Y_TOKEN = new ethers.Contract(WETH_TOKEN_ADDR, ERC20_ABI, App.provider);
 
     const stakedYAmount = await Y_STAKING_POOL.balanceOf(App.YOUR_ADDRESS) / 1e18;
     const earnedYFI = await Y_STAKING_POOL.earned(App.YOUR_ADDRESS) / 1e18;
     const totalSupplyY = await Y_TOKEN.totalSupply() / 1e18;
-    const totalStakedYAmount = await Y_TOKEN.balanceOf(Y_STAKING_POOL_ADDR) / 1e18;
+    const totalStakedYAmount = await Y_TOKEN.balanceOf(ANNUAL_WETH_STAKING_POOL) / 1e18;
 
     // Find out reward rate
     // const weekly_reward = await get_synth_weekly_rewards(Y_STAKING_POOL);
