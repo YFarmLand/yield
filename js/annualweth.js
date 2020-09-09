@@ -20,7 +20,7 @@ async function main() {
     const totalSupplyY = await CREAM_TOKEN.balanceOf(ANNUAL_WETH_STAKING_POOL) / 1e18;
     const totalStakedYAmount = await Y_TOKEN.balanceOf(ANNUAL_WETH_STAKING_POOL) / 1e18;
     const rewardpertoken = await Y_STAKING_POOL.rewardPerToken();
-    console.log(rewardpertoken);
+    console.log(rewardpertoken.toString());
 
     // Find out reward rate
      const weekly_reward = await get_synth_weekly_rewards(Y_STAKING_POOL);
@@ -28,34 +28,34 @@ async function main() {
     console.log(weekly_reward);
     const rewardPerToken = weekly_reward / totalStakedYAmount;
     console.log(rewardPerToken);
-
+    const prices = await lookUpPrices(["cream-2", "ethereum"]);
     // Find out underlying assets of Y
-    const YVirtualPrice = 1;
+    const YVirtualPrice = prices["ethereum"].usd;
 
     _print("Finished reading smart contracts... Looking up prices... \n")
 
     // Look up prices
-    const prices = await lookUpPrices(["yearn-finance"]);
+    //const prices = await lookUpPrices(["yearn-finance"]);
     const YFIPrice = 28;
 
     // Finished. Start printing
 
     _print("========== PRICES ==========")
-    _print(`1 YFI  = $${YFIPrice}`);
-    _print(`1 yCRV = $${YVirtualPrice}`);
+    _print(`1 YFARMER  = $${YFIPrice}`);
+    _print(`1 WETH = $${YVirtualPrice}`);
 
     _print("========== STAKING =========")
-    _print(`There are total   : ${totalSupplyY} yCRV issued by Y Curve Pool.`);
-    _print(`There are total   : ${totalStakedYAmount} yCRV staked in ygov's yCRV staking pool.`);
+    _print(`There are total   : ${totalSupplyY} WETH issued by ANNUAL WETH YFARMER.`);
+    _print(`There are total   : ${totalStakedYAmount} WETH staked in ygov's ANNUAL WETH staking pool.`);
     _print(`                  = ${toDollar(totalStakedYAmount * YVirtualPrice)}\n`);
-    _print(`You are staking   : ${stakedYAmount} yCRV (${toFixed(stakedYAmount * 100 / totalStakedYAmount, 3)}% of the pool)`);
+    _print(`You are staking   : ${stakedYAmount} WETH (${toFixed(stakedYAmount * 100 / totalStakedYAmount, 3)}% of the pool)`);
     _print(`                  = ${toDollar(stakedYAmount * YVirtualPrice)}\n`);
 
     // YFI REWARDS
-    _print("======== YFI REWARDS ========")
+    _print("======== YFARMER REWARDS ========")
     _print(" (Temporarily paused until further emission model is voted by the community) ");
     _print(`Claimable Rewards : ${toFixed(earnedYFI, 4)} YFI = $${toFixed(earnedYFI * YFIPrice, 2)}`);
-    _print(`Weekly estimate   : ${toFixed(rewardPerToken * stakedYAmount, 2)} YFI = ${toDollar(rewardPerToken * stakedYAmount * YFIPrice)} (out of total ${weekly_reward} YFI)`)
+    _print(`Weekly estimate   : ${toFixed(rewardPerToken * stakedYAmount, 2)} YFI = ${toDollar(rewardPerToken * stakedYAmount * YFIPrice)} (out of total ${weekly_reward} YFARMER)`)
     const YFIWeeklyROI = (rewardPerToken * YFIPrice) * 100 / (YVirtualPrice);
     _print(`Weekly ROI in USD : ${toFixed(YFIWeeklyROI, 4)}%`)
     _print(`APY (unstable)    : ${toFixed(YFIWeeklyROI * 52, 4)}% \n`)
