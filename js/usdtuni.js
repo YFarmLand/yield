@@ -12,9 +12,9 @@ async function main() {
     _print(`Reward Pool Address: ${CREAM_UNI_POOL_ADDR}\n`)
 
     const CREAM_STAKING_POOL = new ethers.Contract(USDT_UNI_POOL_ADDR, CREAM_REWARD_POOL_ABI, App.provider)
-    const CREAM_TOKEN = new ethers.Contract(CREAM_TOKEN_ADDR, ERC20_ABI, App.provider)
+    const CREAM_TOKEN = new ethers.Contract(CREAM_USDT_UNI_TOKEN_ADDR, ERC20_ABI, App.provider)
     const WETH_TOKEN = new ethers.Contract(USDT_ADDRESS, ERC20_ABI, App.provider)
-    const CREAM_WETH_UNI_TOKEN = new ethers.Contract(CREAM_USDT_UNI_TOKEN_ADDR, UNISWAP_V2_PAIR_ABI, App.provider)
+    const CREAM_WETH_UNI_TOKEN = new ethers.Contract(CREAM_WETH_UNI_TOKEN_ADDR, UNISWAP_V2_PAIR_ABI, App.provider)
 
     const stakedUNIAmount = (await CREAM_STAKING_POOL.balanceOf(App.YOUR_ADDRESS)) / 1e18;
     const earnedCREAM = (await CREAM_STAKING_POOL.earned(App.YOUR_ADDRESS)) / 1e18;
@@ -35,7 +35,7 @@ async function main() {
 
     const prices = await lookUpPrices(["cream-2", "ethereum"]);
     const CREAMPrice = 28;
-    const ETHPrice = prices["ethereum"].usd;
+    const ETHPrice = 1;
 
     const UNIPrice = CREAMPerUNI * CREAMPrice + WETHPerUNI * ETHPrice;
 
@@ -50,7 +50,7 @@ async function main() {
     _print(`There are total   : ${totalStakedUNIAmount} UNI staked in YFARMER's UNI staking pool.`);
     _print(`                  = ${toDollar(totalStakedUNIAmount * UNIPrice)}\n`);
     _print(`You are staking   : ${stakedUNIAmount} UNI (${toFixed(stakedUNIAmount * 100 / totalStakedUNIAmount, 3)}% of the pool)`);
-    _print(`                  = [${CREAMPerUNI * stakedUNIAmount} YFARMER, ${WETHPerUNI * stakedUNIAmount} ETH]`);
+    _print(`                  = [${CREAMPerUNI * stakedUNIAmount} CREAM, ${WETHPerUNI * stakedUNIAmount} ETH]`);
     _print(`                  = ${toDollar(CREAMPerUNI * stakedUNIAmount * CREAMPrice + WETHPerUNI * stakedUNIAmount * ETHPrice)}\n`);
 
     // CREAM REWARDS
@@ -58,7 +58,7 @@ async function main() {
     _print(`Claimable Rewards : ${toFixed(earnedCREAM, 4)} YFARMER = ${toDollar(earnedCREAM * CREAMPrice)}`);
     const CREAMWeeklyEstimate = rewardPerToken * stakedUNIAmount;
 
-    _print(`Hourly estimate   : ${toFixed(CREAMWeeklyEstimate / (24 * 7), 4)} YFARMER = ${toDollar((CREAMWeeklyEstimate / (24 * 7)) * CREAMPrice)} (out of total ${toFixed(weekly_reward / (7 * 24), 2)} CREAM)`)
+    _print(`Hourly estimate   : ${toFixed(CREAMWeeklyEstimate / (24 * 7), 4)} YFARMER = ${toDollar((CREAMWeeklyEstimate / (24 * 7)) * CREAMPrice)} (out of total ${toFixed(weekly_reward / (7 * 24), 2)} YFARMER)`)
     _print(`Daily estimate    : ${toFixed(CREAMWeeklyEstimate / 7, 2)} YFARMER = ${toDollar((CREAMWeeklyEstimate / 7) * CREAMPrice)} (out of total ${toFixed(weekly_reward / 7, 2)} YFARMER)`)
     _print(`Weekly estimate   : ${toFixed(CREAMWeeklyEstimate, 2)} YFARMER = ${toDollar(CREAMWeeklyEstimate * CREAMPrice)} (out of total ${weekly_reward} YFARMER)`)
     const CREAMWeeklyROI = (rewardPerToken * CREAMPrice) * 100 / (UNIPrice);
