@@ -44,16 +44,16 @@ async function main() {
 
     _print("========== PRICES ==========")
     _print(`1 YFARMER  = $${CREAMPrice}`);
-    _print(`1 ETH   = $${ETHPrice}\n`);
-    _print(`1 UNI   = [${CREAMPerUNI} CREAM, ${WETHPerUNI} ETH]`);
+    _print(`1 USDT   = $${ETHPrice}\n`);
+    _print(`1 UNI   = [${CREAMPerUNI} CREAM, ${WETHPerUNI} USDT]`);
     _print(`        = ${toDollar(UNIPrice)}\n`);
 
     _print("========== STAKING =========")
-    _print(`There are total   : ${totalUNIAmount} UNI issued by YFARMER ETH Uniswap Pool.`);
+    _print(`There are total   : ${totalUNIAmount} UNI issued by YFARMER USDT Uniswap Pool.`);
     _print(`There are total   : ${totalStakedUNIAmount} UNI staked in YFARMER's UNI staking pool.`);
     _print(`                  = ${toDollar(totalStakedUNIAmount * UNIPrice)}\n`);
     _print(`You are staking   : ${stakedUNIAmount} UNI (${toFixed(stakedUNIAmount * 100 / totalStakedUNIAmount, 3)}% of the pool)`);
-    _print(`                  = [${CREAMPerUNI * stakedUNIAmount} CREAM, ${WETHPerUNI * stakedUNIAmount} ETH]`);
+    _print(`                  = [${CREAMPerUNI * stakedUNIAmount} USDT, ${WETHPerUNI * stakedUNIAmount} YFARMER]`);
     _print(`                  = ${toDollar(CREAMPerUNI * stakedUNIAmount * CREAMPrice + WETHPerUNI * stakedUNIAmount * ETHPrice)}\n`);
 
     // CREAM REWARDS
