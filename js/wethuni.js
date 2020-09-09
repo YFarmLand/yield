@@ -58,7 +58,7 @@ async function main() {
     _print(`Claimable Rewards : ${toFixed(earnedCREAM, 4)} YFARMER = ${toDollar(earnedCREAM * CREAMPrice)}`);
     const CREAMWeeklyEstimate = rewardPerToken * stakedUNIAmount;
 
-    _print(`Hourly estimate   : ${toFixed(CREAMWeeklyEstimate / (24 * 7), 4)} YFARMER = ${toDollar((CREAMWeeklyEstimate / (24 * 7)) * CREAMPrice)} (out of total ${toFixed(weekly_reward / (7 * 24), 2)} CREAM)`)
+    _print(`Hourly estimate   : ${toFixed(CREAMWeeklyEstimate / (24 * 7), 4)} YFARMER = ${toDollar((CREAMWeeklyEstimate / (24 * 7)) * CREAMPrice)} (out of total ${toFixed(weekly_reward / (7 * 24), 2)} YFARMER)`)
     _print(`Daily estimate    : ${toFixed(CREAMWeeklyEstimate / 7, 2)} YFARMER = ${toDollar((CREAMWeeklyEstimate / 7) * CREAMPrice)} (out of total ${toFixed(weekly_reward / 7, 2)} YFARMER)`)
     _print(`Weekly estimate   : ${toFixed(CREAMWeeklyEstimate, 2)} YFARMER = ${toDollar(CREAMWeeklyEstimate * CREAMPrice)} (out of total ${weekly_reward} YFARMER)`)
     const CREAMWeeklyROI = (rewardPerToken * CREAMPrice) * 100 / (UNIPrice);
