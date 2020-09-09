@@ -28,9 +28,9 @@ async function main() {
     console.log(weekly_reward);
     const rewardPerToken = weekly_reward / totalStakedYAmount;
     console.log(rewardPerToken);
-    const prices = await lookUpPrices(["cream-2", "compound"]);
+    const prices = await lookUpPrices(["cream-2", "compound-governance-token"]);
     // Find out underlying assets of Y
-    const YVirtualPrice = prices["compound"].usd;
+    const YVirtualPrice = prices["compound-governance-token"].usd;
 
     _print("Finished reading smart contracts... Looking up prices... \n")
 
