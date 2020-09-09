@@ -50,7 +50,7 @@ async function main() {
     _print(`There are total   : ${totalStakedUNIAmount} UNI staked in YFARMER's UNI staking pool.`);
     _print(`                  = ${toDollar(totalStakedUNIAmount * UNIPrice)}\n`);
     _print(`You are staking   : ${stakedUNIAmount} UNI (${toFixed(stakedUNIAmount * 100 / totalStakedUNIAmount, 3)}% of the pool)`);
-    _print(`                  = [${CREAMPerUNI * stakedUNIAmount} CREAM, ${WETHPerUNI * stakedUNIAmount} ETH]`);
+    _print(`                  = [${CREAMPerUNI * stakedUNIAmount} YFARMER, ${WETHPerUNI * stakedUNIAmount} ETH]`);
     _print(`                  = ${toDollar(CREAMPerUNI * stakedUNIAmount * CREAMPrice + WETHPerUNI * stakedUNIAmount * ETHPrice)}\n`);
 
     // CREAM REWARDS
