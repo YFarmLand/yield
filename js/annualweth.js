@@ -45,7 +45,7 @@ async function main() {
     _print(`1 WETH = $${YVirtualPrice}`);
 
     _print("========== STAKING =========")
-    _print(`There are total   : ${totalSupplyY} WETH issued by ANNUAL WETH YFARMER.`);
+    _print(`There are total   : ${totalSupplyY} YFARMER issued by ANNUAL WETH YFARMER.`);
     _print(`There are total   : ${totalStakedYAmount} WETH staked in ygov's ANNUAL WETH staking pool.`);
     _print(`                  = ${toDollar(totalStakedYAmount * YVirtualPrice)}\n`);
     _print(`You are staking   : ${stakedYAmount} WETH (${toFixed(stakedYAmount * 100 / totalStakedYAmount, 3)}% of the pool)`);
@@ -54,8 +54,8 @@ async function main() {
     // YFI REWARDS
     _print("======== YFARMER REWARDS ========")
     _print(" (Temporarily paused until further emission model is voted by the community) ");
-    _print(`Claimable Rewards : ${toFixed(earnedYFI, 4)} YFI = $${toFixed(earnedYFI * YFIPrice, 2)}`);
-    _print(`Weekly estimate   : ${toFixed(rewardPerToken * stakedYAmount, 2)} YFI = ${toDollar(rewardPerToken * stakedYAmount * YFIPrice)} (out of total ${weekly_reward} YFARMER)`)
+    _print(`Claimable Rewards : ${toFixed(earnedYFI, 4)} YFARMER = $${toFixed(earnedYFI * YFIPrice, 2)}`);
+    _print(`Weekly estimate   : ${toFixed(rewardPerToken * stakedYAmount, 2)} YFARMER = ${toDollar(rewardPerToken * stakedYAmount * YFIPrice)} (out of total ${weekly_reward} YFARMER)`)
     const YFIWeeklyROI = (rewardPerToken * YFIPrice) * 100 / (YVirtualPrice);
     _print(`Weekly ROI in USD : ${toFixed(YFIWeeklyROI, 4)}%`)
     _print(`APY (unstable)    : ${toFixed(YFIWeeklyROI * 52, 4)}% \n`)
