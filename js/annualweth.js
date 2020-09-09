@@ -19,12 +19,15 @@ async function main() {
     const earnedYFI = await Y_STAKING_POOL.earned(App.YOUR_ADDRESS) / 1e18;
     const totalSupplyY = await CREAM_TOKEN.balanceOf(ANNUAL_WETH_STAKING_POOL) / 1e18;
     const totalStakedYAmount = await Y_TOKEN.balanceOf(ANNUAL_WETH_STAKING_POOL) / 1e18;
+    const rewardpertoken = await Y_STAKING_POOL.rewardPerToken();
+    console.log(rewardpertoken);
 
     // Find out reward rate
      const weekly_reward = await get_synth_weekly_rewards(Y_STAKING_POOL);
     //const weekly_reward = 0;
-
+    console.log(weekly_reward);
     const rewardPerToken = weekly_reward / totalStakedYAmount;
+    console.log(rewardPerToken);
 
     // Find out underlying assets of Y
     const YVirtualPrice = 1;
