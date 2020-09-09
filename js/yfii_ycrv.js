@@ -34,7 +34,7 @@ async function main() {
     const rewardPerToken = weekly_reward / totalStakedUNIAmount;
 
     const prices = await lookUpPrices(["cream-2", "ethereum"]);
-    const CREAMPrice = prices["cream-2"].usd;
+    const CREAMPrice = 28;
     const ETHPrice = prices["ethereum"].usd;
 
     const UNIPrice = CREAMPerUNI * CREAMPrice + WETHPerUNI * ETHPrice;
