@@ -21,7 +21,7 @@ async function main() {
     const totalUNIAmount = (await CREAM_WETH_UNI_TOKEN.totalSupply()) / 1e18;
     const totalStakedUNIAmount = (await CREAM_WETH_UNI_TOKEN.balanceOf(CREAM_UNI_POOL_ADDR)) / 1e18;
     const totalCREAMAmount = (await CREAM_TOKEN.balanceOf(CREAM_USDT_UNI_TOKEN_ADDR)) / 1e18;
-    const totalWETHAmount = (await WETH_TOKEN.balanceOf(CREAM_USDT_UNI_TOKEN_ADDR)) / 1e6;
+    const totalWETHAmount = (await WETH_TOKEN.balanceOf(CREAM_USDT_UNI_TOKEN_ADDR)) / 1e18;
 
     const CREAMPerUNI = totalCREAMAmount / totalUNIAmount;
     const WETHPerUNI = totalWETHAmount / totalUNIAmount;
