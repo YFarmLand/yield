@@ -11,17 +11,17 @@ async function main() {
     _print('Reading smart contracts...\n')
     _print(`Reward Pool Address: ${CREAM_UNI_POOL_ADDR}\n`)
 
-    const CREAM_STAKING_POOL = new ethers.Contract(CREAM_UNI_POOL_ADDR, CREAM_REWARD_POOL_ABI, App.provider)
+    const CREAM_STAKING_POOL = new ethers.Contract(USDT_UNI_POOL_ADDR, CREAM_REWARD_POOL_ABI, App.provider)
     const CREAM_TOKEN = new ethers.Contract(CREAM_TOKEN_ADDR, ERC20_ABI, App.provider)
-    const WETH_TOKEN = new ethers.Contract(WETH_TOKEN_ADDR, ERC20_ABI, App.provider)
-    const CREAM_WETH_UNI_TOKEN = new ethers.Contract(CREAM_WETH_UNI_TOKEN_ADDR, UNISWAP_V2_PAIR_ABI, App.provider)
+    const WETH_TOKEN = new ethers.Contract(USDT_ADDRESS, ERC20_ABI, App.provider)
+    const CREAM_WETH_UNI_TOKEN = new ethers.Contract(CREAM_USDT_UNI_TOKEN_ADDR, UNISWAP_V2_PAIR_ABI, App.provider)
 
     const stakedUNIAmount = (await CREAM_STAKING_POOL.balanceOf(App.YOUR_ADDRESS)) / 1e18;
     const earnedCREAM = (await CREAM_STAKING_POOL.earned(App.YOUR_ADDRESS)) / 1e18;
     const totalUNIAmount = (await CREAM_WETH_UNI_TOKEN.totalSupply()) / 1e18;
     const totalStakedUNIAmount = (await CREAM_WETH_UNI_TOKEN.balanceOf(CREAM_UNI_POOL_ADDR)) / 1e18;
     const totalCREAMAmount = (await CREAM_TOKEN.balanceOf(CREAM_WETH_UNI_TOKEN_ADDR)) / 1e18;
-    const totalWETHAmount = (await WETH_TOKEN.balanceOf(CREAM_WETH_UNI_TOKEN_ADDR)) / 1e18;
+    const totalWETHAmount = (await WETH_TOKEN.balanceOf(CREAM_WETH_UNI_TOKEN_ADDR)) / 1e6;
 
     const CREAMPerUNI = totalCREAMAmount / totalUNIAmount;
     const WETHPerUNI = totalWETHAmount / totalUNIAmount;
