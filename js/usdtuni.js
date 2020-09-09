@@ -45,7 +45,7 @@ async function main() {
     _print("========== PRICES ==========")
     _print(`1 YFARMER  = $${CREAMPrice}`);
     _print(`1 USDT   = $${ETHPrice}\n`);
-    _print(`1 UNI   = [${CREAMPerUNI} CREAM, ${WETHPerUNI} USDT]`);
+    _print(`1 UNI   = [${CREAMPerUNI} YFARMER, ${WETHPerUNI} USDT]`);
     _print(`        = ${toDollar(UNIPrice)}\n`);
 
     _print("========== STAKING =========")
