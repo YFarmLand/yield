@@ -18,11 +18,14 @@ async function main() {
 
     const stakedUNIAmount = (await CREAM_STAKING_POOL.balanceOf(App.YOUR_ADDRESS)) / 1e18;
     const earnedCREAM = (await CREAM_STAKING_POOL.earned(App.YOUR_ADDRESS)) / 1e18;
-    const totalUNIAmount = (await CREAM_WETH_UNI_TOKEN.totalSupply()) / 1e18;
-    const totalStakedUNIAmount = (await CREAM_WETH_UNI_TOKEN.balanceOf(CREAM_UNI_POOL_ADDR)) / 1e18;
+    const totalUNIAmount = (await CREAM_WETH_UNI_TOKEN.totalSupply()) / 1e6;
+    const totalStakedUNIAmount = (await CREAM_WETH_UNI_TOKEN.balanceOf(CREAM_UNI_POOL_ADDR)) / 1e6;
     const totalCREAMAmount = (await CREAM_TOKEN.balanceOf(CREAM_USDT_UNI_TOKEN_ADDR)) / 1e18;
-    const totalWETHAmount = (await WETH_TOKEN.balanceOf(CREAM_USDT_UNI_TOKEN_ADDR)) / 1e18;
+    const totalWETHAmount = (await WETH_TOKEN.balanceOf(CREAM_USDT_UNI_TOKEN_ADDR)) / 1e6;
+    console.log(totalWETHAmount);
 
+    const totalWETHAmount2 = (await WETH_TOKEN.balanceOf(CREAM_USDT_UNI_TOKEN_ADDR)) / 1e6;
+    console.log(totalWETHAmount2);
     const CREAMPerUNI = totalCREAMAmount / totalUNIAmount;
     const WETHPerUNI = totalWETHAmount / totalUNIAmount;
 
