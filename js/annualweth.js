@@ -16,7 +16,7 @@ async function main() {
 
     const stakedYAmount = await Y_STAKING_POOL.balanceOf(App.YOUR_ADDRESS) / 1e18;
     const earnedYFI = await Y_STAKING_POOL.earned(App.YOUR_ADDRESS) / 1e18;
-    const totalSupplyY = await Y_TOKEN.totalSupply() / 1e18;
+    const totalSupplyY = await Y_STAKING_POOL.totalSupply() / 1e18;
     const totalStakedYAmount = await Y_TOKEN.balanceOf(ANNUAL_WETH_STAKING_POOL) / 1e18;
 
     // Find out reward rate
